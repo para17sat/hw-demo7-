@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aizat</title>
+  <style>
+    nav{
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: space-around;
+      padding: 5px;
+      
+    }
+    .all{
+      display: flex;
+      gap: 50px;
+    }
+    .burger{
+      display: none;
+    }
+    .card{
+      border: 1px solid black;
+      padding: 15px;
+      width: 100px;
+
+    }
+    .card img{
+      width: 100px;
+      
+    }
+    .main{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .first{
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .second{
+      display: flex;
+      padding-left: 145px;
+      gap: 15px;
+    }
+    @media screen   and (max-width:450px) {
+      .first{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+        padding-left: 145px;
+        
+      }
+      .second{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+      }
+      .main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+     
+      .burger{
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding-top: 15px;
+        z-index: 0;
+      }
+      .all{
+        display: none;
+      }
+      .active{
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        position: absolute;
+        top: 20px;
+        right: 8px;
+        padding: 25px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <p>BookNest</p>
+    <div class="all">
+      <p>Home</p>
+      <p>Browse</p>
+      <p>Cart</p>
+    </div>
+    <img class="burger" src="assets/burger.webp" alt="">
+  </nav>
+  <div id="cart-summary" style="position: absolute; top: 80px; right: 20px; background: #f0f0f0; padding: 15px; border: 1px solid #ccc; width: 200px;">
+    <h3>Cart Summary</h3>
+    <ul id="cart-items" style="padding-left: 18px;"></ul>
+    <p><strong>Total:</strong> $<span id="total-price">0.00</span></p>
+  </div>
+  <h1>Available Books</h1>
+
+  <div class="main">
+
+    <div class="first">
+
+      <div class="card">
+        <img src="assets/sample-books/book-1984.jpg" alt="">
+        <p>1984</p>
+        <span>by Author 1</span>
+        <p>$1.50/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-hobbit.jpg" alt="">
+        <p>The Hobbit</p>
+        <span>by Author 2</span>
+        <p>$2.00/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-mockingbird.jpg" alt="">
+        <p>To kill</p>
+        <span>by Author 3</span>
+        <p>$2.50/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-pride.jpg" alt="">
+        <p>Pride </p>
+        <span>by Author 4</span>
+        <p>$3.00/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-mobydick.jpg" alt="">
+        <p>Mody-Dick</p>
+        <span>by Author 5</span>
+        <p>$1.00/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-warpeace.jpg" alt="">
+        <p>War and peace</p>
+        <span>by Author 6</span>
+        <p>$1.00/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-gatsby.jpg" alt="">
+        <p>Gatsby</p>
+        <span>by Author 7</span>
+        <p>$2.00/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-catcher.jpg" alt="">
+        <p>The Catcher</p>
+        <span>by Author 8</span>
+        <p>$1.00/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+    </div>
+
+
+    <div class="second">
+
+      <div class="card">
+        <img src="assets/sample-books/book-bravenew.jpg" alt="">
+        <p>1984</p>
+        <span>by Author 9</span>
+        <p>$1.50/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-janeeyre.jpg" alt="">
+        <p>The Hobbit</p>
+        <span>by Author 10</span>
+        <p>$2.00/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-crime.jpg" alt="">
+        <p>To kill</p>
+        <span>by Author 11</span>
+        <p>$2.50/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-anna.jpg" alt="">
+        <p>Pride </p>
+        <span>by Author 12</span>
+        <p>$3.00/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-alchemist.jpg" alt="">
+        <p>Mody-Dick</p>
+        <span>by Author 13</span>
+        <p>$1.00/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-lesmis.jpg" alt="">
+        <p>War and peace</p>
+        <span>by Author 14</span>
+        <p>$1.00/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+      <div class="card">
+        <img src="assets/sample-books/book-donquixote.jpg" alt="">
+        <p>Gatsby</p>
+        <span>by Author 15</span>
+        <p>$2.00/day</p>
+        <button class="rent">Rent</button>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <div id="book-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
+    <div style="background:white; padding:20px; border-radius:8px; width:300px; position:relative;">
+      <span id="close-modal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
+      <img id="modal-image" src="" style="width:100%; height:auto;" />
+      <h2 id="modal-title"></h2>
+      <p id="modal-price"></p>
+    </div>
+  </div>
+  
+  
+
+  
+  <script>
+    const burger = document.querySelector('.burger');
+    const  all = document.querySelector('.all');
+
+    burger.addEventListener('click', function(){
+      all.classList.toggle('active');
+      
+    });
+
+
+
+    const rentButtons = document.querySelectorAll('.rent');
+    const cartItems = document.getElementById('cart-items');
+    const totalPriceEl = document.getElementById('total-price');
+
+    let total = 0;
+
+    rentButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.card');
+        const title = card.querySelector('p').innerText;
+        const priceText = card.querySelectorAll('p')[1].innerText; 
+        const price = parseFloat(priceText.replace('$', '').replace('/day', ''));
+
+    
+        const li = document.createElement('li');
+        li.textContent = `${title} - $${price.toFixed(2)}`;
+        cartItems.appendChild(li);
+
+        total += price;
+        totalPriceEl.textContent = total.toFixed(2);
+      });
+    });
+
+
+
+    const cards = document.querySelectorAll('.card');
+    const modal = document.getElementById('book-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    const modalPrice = document.getElementById('modal-price');
+    const closeModal = document.getElementById('close-modal');
+
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        
+        if (e.target.classList.contains('rent')) return;
+
+        const imgSrc = card.querySelector('img').src;
+        const title = card.querySelector('p').innerText;
+        const price = card.querySelectorAll('p')[1].innerText;
+
+        modalImage.src = imgSrc;
+        modalTitle.textContent = title;
+        modalPrice.textContent = price;
+        modal.style.display = 'flex';
+      });
+    });
+
+
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+   
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+  </script>
+</body>
+</html>
