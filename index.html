@@ -240,90 +240,95 @@
 
 
   </div>
-
-  <div id="book-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
-    <div style="background:white; padding:20px; border-radius:8px; width:300px; position:relative;">
-      <span id="close-modal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
-      <img id="modal-image" src="" style="width:100%; height:auto;" />
-      <h2 id="modal-title"></h2>
-      <p id="modal-price"></p>
-    </div>
+<div id="book-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
+  <div style="background:white; padding:20px; border-radius:8px; width:300px; position:relative;">
+    <span id="close-modal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
+    <img id="modal-image" src="" style="width:100%; height:auto;" />
+    <h2 id="modal-title"></h2>
+    <p id="modal-author"></p>
+    <p id="modal-price"></p>
+    <p id="modal-type" style="color:gray; font-style:italic;"></p>
   </div>
-  
-  
+</div>
 
-  
-  <script>
-    const burger = document.querySelector('.burger');
-    const  all = document.querySelector('.all');
+<script>
+  const burger = document.querySelector('.burger');
+  const all = document.querySelector('.all');
 
-    burger.addEventListener('click', function(){
-      all.classList.toggle('active');
-      
+  burger.addEventListener('click', function(){
+    all.classList.toggle('active');
+  });
+
+  const rentButtons = document.querySelectorAll('.rent');
+  const cartItems = document.getElementById('cart-items');
+  const totalPriceEl = document.getElementById('total-price');
+  const modal = document.getElementById('book-modal');
+  const modalImage = document.getElementById('modal-image');
+  const modalTitle = document.getElementById('modal-title');
+  const modalPrice = document.getElementById('modal-price');
+  const modalAuthor = document.getElementById('modal-author');
+  const modalType = document.getElementById('modal-type');
+  const closeModal = document.getElementById('close-modal');
+
+  let total = 0;
+
+  rentButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent card click
+
+      const card = button.closest('.card');
+      const title = card.querySelector('p').innerText;
+      const author = card.querySelector('span').innerText;
+      const priceText = card.querySelectorAll('p')[1].innerText;
+      const imgSrc = card.querySelector('img').src;
+      const price = parseFloat(priceText.replace('$', '').replace('/day', ''));
+
+      // Add to cart
+      const li = document.createElement('li');
+      li.textContent = `${title} - $${price.toFixed(2)}`;
+      cartItems.appendChild(li);
+
+      total += price;
+      totalPriceEl.textContent = total.toFixed(2);
+
+      // Show rent modal with full info
+      modalImage.src = imgSrc;
+      modalTitle.textContent = title;
+      modalAuthor.textContent = author;
+      modalPrice.textContent = priceText;
+      modalType.textContent = 'You have rented this book.';
+      modal.style.display = 'flex';
     });
+  });
 
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.classList.contains('rent')) return;
 
+      const imgSrc = card.querySelector('img').src;
+      const title = card.querySelector('p').innerText;
+      const author = card.querySelector('span').innerText;
+      const price = card.querySelectorAll('p')[1].innerText;
 
-    const rentButtons = document.querySelectorAll('.rent');
-    const cartItems = document.getElementById('cart-items');
-    const totalPriceEl = document.getElementById('total-price');
-
-    let total = 0;
-
-    rentButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const card = button.closest('.card');
-        const title = card.querySelector('p').innerText;
-        const priceText = card.querySelectorAll('p')[1].innerText; 
-        const price = parseFloat(priceText.replace('$', '').replace('/day', ''));
-
-    
-        const li = document.createElement('li');
-        li.textContent = `${title} - $${price.toFixed(2)}`;
-        cartItems.appendChild(li);
-
-        total += price;
-        totalPriceEl.textContent = total.toFixed(2);
-      });
+      modalImage.src = imgSrc;
+      modalTitle.textContent = title;
+      modalAuthor.textContent = author;
+      modalPrice.textContent = price;
+      modalType.textContent = 'Book details';
+      modal.style.display = 'flex';
     });
+  });
 
+  closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
 
-
-    const cards = document.querySelectorAll('.card');
-    const modal = document.getElementById('book-modal');
-    const modalImage = document.getElementById('modal-image');
-    const modalTitle = document.getElementById('modal-title');
-    const modalPrice = document.getElementById('modal-price');
-    const closeModal = document.getElementById('close-modal');
-
-    cards.forEach(card => {
-      card.addEventListener('click', (e) => {
-        
-        if (e.target.classList.contains('rent')) return;
-
-        const imgSrc = card.querySelector('img').src;
-        const title = card.querySelector('p').innerText;
-        const price = card.querySelectorAll('p')[1].innerText;
-
-        modalImage.src = imgSrc;
-        modalTitle.textContent = title;
-        modalPrice.textContent = price;
-        modal.style.display = 'flex';
-      });
-    });
-
-
-    closeModal.addEventListener('click', () => {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
       modal.style.display = 'none';
-    });
-
-   
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
-
-  </script>
+    }
+  });
+</script>
 </body>
 </html>
