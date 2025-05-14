@@ -3,94 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Parasat</title>
+  <title>BookNest</title>
   <style>
-    nav{
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
       background-color: black;
       color: white;
       display: flex;
       justify-content: space-around;
-      padding: 5px;
-      
+      padding: 10px;
+      align-items: center;
     }
-    .all{
+    .all {
       display: flex;
-      gap: 50px;
+      gap: 20px;
     }
-    .burger{
+    .burger {
       display: none;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
     }
-    .card{
+    .card {
       border: 1px solid black;
       padding: 15px;
-      width: 100px;
-
+      width: 120px;
+      text-align: center;
+      cursor: pointer;
     }
-    .card img{
+    .card img {
       width: 100px;
-      
+      height: auto;
     }
-    .main{
+    .main {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 20px;
+      padding: 20px;
     }
-    .first{
+    .first, .second {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
+      gap: 20px;
     }
-    .second{
-      display: flex;
-      padding-left: 145px;
-      gap: 15px;
+    #cart-summary {
+      position: absolute;
+      top: 80px;
+      right: 20px;
+      background: #f0f0f0;
+      padding: 15px;
+      border: 1px solid #ccc;
+      width: 200px;
     }
-    @media screen   and (max-width:450px) {
-      .first{
-        display: flex;
+
+    @media screen and (max-width: 450px) {
+      .first, .second {
         flex-direction: column;
-        justify-content: center;
-        gap: 15px;
-        padding-left: 145px;
-        
+        align-items: center;
       }
-      .second{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 15px;
+      .main {
+        align-items: center;
       }
-      .main{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-     
-      .burger{
+      .burger {
         display: block;
-        width: 20px;
-        height: 20px;
-        padding-top: 15px;
-        z-index: 0;
       }
-      .all{
+      .all {
         display: none;
       }
-      .active{
+      .all.active {
         background-color: black;
         display: flex;
         flex-direction: column;
-        gap: 0px;
+        gap: 10px;
         position: absolute;
-        top: 20px;
-        right: 8px;
-        padding: 25px;
+        top: 50px;
+        right: 10px;
+        padding: 15px;
+        z-index: 1;
       }
     }
-
   </style>
 </head>
 <body>
+
   <nav>
     <p>BookNest</p>
     <div class="all">
@@ -98,19 +98,20 @@
       <p>Browse</p>
       <p>Cart</p>
     </div>
-    <img class="burger" src="assets/burger.webp" alt="">
+    <img class="burger" src="assets/burger.webp" alt="Menu">
   </nav>
-  <div id="cart-summary" style="position: absolute; top: 80px; right: 20px; background: #f0f0f0; padding: 15px; border: 1px solid #ccc; width: 200px;">
+
+  <div id="cart-summary">
     <h3>Cart Summary</h3>
     <ul id="cart-items" style="padding-left: 18px;"></ul>
     <p><strong>Total:</strong> $<span id="total-price">0.00</span></p>
   </div>
-  <h1>Available Books</h1>
+
+  <h1 style="text-align: center;">Available Books</h1>
 
   <div class="main">
 
     <div class="first">
-
       <div class="card">
         <img src="assets/sample-books/book-1984.jpg" alt="">
         <p>1984</p>
@@ -118,7 +119,6 @@
         <p>$1.50/day</p>
         <button class="rent">Rent</button>
       </div>
-
       <div class="card">
         <img src="assets/sample-books/book-hobbit.jpg" alt="">
         <p>The Hobbit</p>
@@ -126,39 +126,30 @@
         <p>$2.00/day</p>
         <button class="rent">Rent</button>
       </div>
-
       <div class="card">
         <img src="assets/sample-books/book-mockingbird.jpg" alt="">
-        <p>To kill</p>
+        <p>To Kill</p>
         <span>by Author 3</span>
         <p>$2.50/day</p>
         <button class="rent">Rent</button>
       </div>
-
       <div class="card">
         <img src="assets/sample-books/book-pride.jpg" alt="">
-        <p>Pride </p>
+        <p>Pride</p>
         <span>by Author 4</span>
         <p>$3.00/day</p>
         <button class="rent">Rent</button>
       </div>
+    </div>
 
-      <div class="card">
-        <img src="assets/sample-books/book-mobydick.jpg" alt="">
-        <p>Mody-Dick</p>
-        <span>by Author 5</span>
-        <p>$1.00/day</p>
-        <button class="rent">Rent</button>
-      </div>
-
+    <div class="second">
       <div class="card">
         <img src="assets/sample-books/book-warpeace.jpg" alt="">
-        <p>War and peace</p>
+        <p>War and Peace</p>
         <span>by Author 6</span>
         <p>$1.00/day</p>
         <button class="rent">Rent</button>
       </div>
-
       <div class="card">
         <img src="assets/sample-books/book-gatsby.jpg" alt="">
         <p>Gatsby</p>
@@ -166,318 +157,113 @@
         <p>$2.00/day</p>
         <button class="rent">Rent</button>
       </div>
-
-      <div class="card">
-        <img src="assets/sample-books/book-catcher.jpg" alt="">
-        <p>The Catcher</p>
-        <span>by Author 8</span>
-        <p>$1.00/day</p>
-        <button class="rent">Rent</button>
-      </div>
-
-    </div>
-
-
-    <div class="second">
-
-      <div class="card">
-        <img src="assets/sample-books/book-bravenew.jpg" alt="">
-        <p>Brave</p>
-        <span>by Author 9</span>
-        <p>$1.50/day</p>
-        <button class="rent">Rent</button>
-      </div>
-
       <div class="card">
         <img src="assets/sample-books/book-janeeyre.jpg" alt="">
-        <p>JANE EYRE</p>
+        <p>Jane Eyre</p>
         <span>by Author 10</span>
         <p>$2.00/day</p>
         <button class="rent">Rent</button>
       </div>
-
       <div class="card">
         <img src="assets/sample-books/book-crime.jpg" alt="">
-        <p>Crime and punishment</p>
+        <p>Crime & Punishment</p>
         <span>by Author 11</span>
         <p>$2.50/day</p>
         <button class="rent">Rent</button>
       </div>
-
-      <div class="card">
-        <img src="assets/sample-books/book-anna.jpg" alt="">
-        <p>Anna Karenina</p>
-        <span>by Author 12</span>
-        <p>$3.00/day</p>
-        <button class="rent">Rent</button>
-      </div>
-
-      <div class="card">
-        <img src="assets/sample-books/book-alchemist.jpg" alt="">
-        <p>The alchemist</p>
-        <span>by Author 13</span>
-        <p>$1.00/day</p>
-        <button class="rent">Rent</button>
-      </div>
-
-      <div class="card">
-        <img src="assets/sample-books/book-lesmis.jpg" alt="">
-        <p>Miserabies</p>
-        <span>by Author 14</span>
-        <p>$1.00/day</p>
-        <button class="rent">Rent</button>
-      </div>
-
-      <div class="card">
-        <img src="assets/sample-books/book-donquixote.jpg" alt="">
-        <p>Don qulxote</p>
-        <span>by Author 15</span>
-        <p>$2.00/day</p>
-        <button class="rent">Rent</button>
-      </div>
-
     </div>
 
-
   </div>
-<div id="book-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
-  <div style="background:white; padding:20px; border-radius:8px; width:300px; position:relative;">
-    <span id="close-modal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
-    <img id="modal-image" src="" style="width:100%; height:auto;" />
-    <h2 id="modal-title"></h2>
-    <p id="modal-author"></p>
-    <p id="modal-price"></p>
-    <p id="modal-type" style="color:gray; font-style:italic;"></p>
+
+  <!-- Modal -->
+  <div id="book-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;">
+    <div style="background:white; padding:20px; border-radius:8px; width:300px; position:relative;">
+      <span id="close-modal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
+      <img id="modal-image" src="" style="width:100%; height:auto;" />
+      <h2 id="modal-title"></h2>
+      <p id="modal-author"></p>
+      <p id="modal-price"></p>
+      <p id="modal-type" style="color:gray; font-style:italic;"></p>
+    </div>
   </div>
-</div>
 
-<script>
- document.querySelector('.burger').addEventListener("click", function(){
-    document.querySelector('.main').classList.toggle("active");
-});
+  <script>
+    const burger = document.querySelector('.burger');
+    const all = document.querySelector('.all');
+    const rentButtons = document.querySelectorAll('.rent');
+    const cartItems = document.getElementById('cart-items');
+    const totalPriceEl = document.getElementById('total-price');
 
+    const modal = document.getElementById('book-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    const modalAuthor = document.getElementById('modal-author');
+    const modalPrice = document.getElementById('modal-price');
+    const modalType = document.getElementById('modal-type');
+    const closeModal = document.getElementById('close-modal');
 
+    let total = 0;
 
-// const btn1 = document.querySelector('.bir');
-// const btn2 = document.querySelector('.eki');
-// const btn3 = document.querySelector('.ush');
-// const btn4 = document.querySelector('.tort');
-// const btn5 = document.querySelector('.bes');
-// const btn6 = document.querySelector('.alty');
-// const btn7 = document.querySelector('.zheti');
-// const btn8 = document.querySelector('.sekiz');
-// const btn9 = document.querySelector('.tokuz');
-// const btn10 = document.querySelector('.on');
-// const btn11 = document.querySelector('.onbir');
-// const btn12 = document.querySelector('.oneki');
-// const cart = document.querySelector('.cart');
-// btn1.addEventListener("click", function(){
-//     cart.innerHTML = `
-//         <p class="cart">Cart</p>
-//         <div style="background-color: rgb(232, 232, 232); color: black; position:absolute; top: 50px; left: 1200px; height: 100px; padding: 30px;">
-//             <h2>Your Rental Cart</h2>
-//             <ul style="margin-bottom: 10px;">
-//                 <li>1984 - 3 day(s) - $1.50</li>
-//             </ul>
-//         </div>
-//     `;
-// });
-// btn2.addEventListener("click", function(){
-//     cart.innerHTML = `
-//         <p class="cart">Cart</p>
-//         <div style="background-color: rgb(232, 232, 232); color: black; position:absolute; top: 55px; left: 1200px; height: 100px; padding: 30px;">
-//             <h2>Your Rental Cart</h2>
-//             <ul style="margin-bottom: 10px;">
-//                 <li>The Hobbit - 3 day(s) - $2.00</li>
-//             </ul>
-//         </div>
-//     `;
-// });
-// btn3.addEventListener("click", function(){
-//     cart.innerHTML = `
-//         <p class="cart">Cart</p>
-//         <div style="background-color: rgb(232, 232, 232); color: black; position:absolute; top: 50px; left: 1200px; height: 100px; padding: 30px;">
-//             <h2>Your Rental Cart</h2>
-//             <ul style="margin-bottom: 10px;">
-//                 <li>To Kill a Mockingbird - 3 day(s) - $2.50</li>
-//             </ul>
-//         </div>
-//     `;
-// });
-// btn4.addEventListener("click", function(){
-//     cart.innerHTML = `
-//         <p class="cart">Cart</p>
-//         <div style="background-color: rgb(232, 232, 232); color: black; position:absolute; top: 50px; left: 1200px; height: 100px; padding: 30px;">
-//             <h2>Your Rental Cart</h2>
-//             <ul style="margin-bottom: 10px;">
-//                 <li>Pride and Prejudicet - 3 day(s) - $3.00</li>
-//             </ul>
-//         </div>
-//     `;
-// });
-// btn5.addEventListener("click", function(){
-//     cart.innerHTML = `
-//         <p class="cart">Cart</p>
-//         <div style="background-color: rgb(232, 232, 232); color: black; position:absolute; top: 50px; left: 1200px; height: 100px; padding: 30px;">
-//             <h2>Your Rental Cart</h2>
-//             <ul style="margin-bottom: 10px;">
-//                 <li>The Moby-Dick - 3 day(s) - $1.00</li>
-//             </ul>
-//         </div>
-//     `;
-// });
-// btn6.addEventListener("click", function(){
-//     cart.innerHTML = `
-//         <p class="cart">Cart</p>
-//         <div style="background-color: rgb(232, 232, 232); color: black; position:absolute; top: 50px; left: 1200px; height: 100px; padding: 30px;">
-//             <h2>Your Rental Cart</h2>
-//             <ul style="margin-bottom: 10px;">
-//                 <li>War and Peace - 3 day(s) - $1.50</li>
-//             </ul>
-//         </div>
-//     `;
-// });
-// btn7.addEventListener("click", function(){
-//     cart.innerHTML = `
-//         <p class="cart">Cart</p>
-//         <div style="background-color: rgb(232, 232, 232); color: black; position:absolute; top: 50px; left: 1200px; height: 100px; padding: 30px;">
-//             <h2>Your Rental Cart</h2>
-//             <ul style="margin-bottom: 10px;">
-//                 <li>The Great Gatsby - 3 day(s) - $2.00</li>
-//             </ul>
-//         </div>
-//     `;
-// });
-// btn8.addEventListener("click", function(){
-//     cart.innerHTML = `
-//         <p class="cart">Cart</p>
-//         <div style="background-color: rgb(232, 232, 232); color: black; position:absolute; top: 50px; left: 1200px; height: 100px; padding: 30px;">
-//             <h2>Your Rental Cart</h2>
-//             <ul style="margin-bottom: 10px;">
-//                 <li>The Catcher in the Rye - 3 day(s) - $2.50</li>
-//             </ul>
-//         </div>
-//     `;
-// });
-// btn9.addEventListener("click", function(){
-//     cart.innerHTML = `
-//         <p class="cart">Cart</p>
-//         <div style="background-color: rgb(232, 232, 232); color: black; position:absolute; top: 50px; left: 1200px; height: 100px; padding: 30px;">
-//             <h2>Your Rental Cart</h2>
-//             <ul style="margin-bottom: 10px;">
-//                 <li>Hobbit - 3 day(s) - $2.10</li>
-//             </ul>
-//         </div>
-//     `;
-// });
-// btn10.addEventListener("click", function(){
-//     cart.innerHTML = `
-//         <p class="cart">Cart</p>
-//         <div style="background-color: rgb(232, 232, 232); color: black; position:absolute; top: 50px; left: 1200px; height: 100px; padding: 30px;">
-//             <h2>Your Rental Cart</h2>
-//             <ul style="margin-bottom: 10px;">
-//                 <li>The - 3 day(s) - $4.00</li>
-//             </ul>
-//         </div>
-//     `;
-// });
-// btn11.addEventListener("click", function(){
-//     cart.innerHTML = `
-//         <p class="cart">Cart</p>
-//         <div style="background-color: rgb(232, 232, 232); color: black; position:absolute; top: 50px; left: 1200px; height: 100px; padding: 30px;">
-//             <h2>Your Rental Cart</h2>
-//             <ul style="margin-bottom: 10px;">
-//                 <li>TWO - 3 day(s) - $1.00</li>
-//             </ul>
-//         </div>
-//     `;
-// });
-// btn12.addEventListener("click", function(){
-//     cart.innerHTML = `
-//         <p class="cart">Cart</p>
-//         <div style="background-color: rgb(232, 232, 232); color: black; position:absolute; top: 50px; left: 1200px; height: 100px; padding: 30px;">
-//             <h2>Your Rental Cart</h2>
-//             <ul style="margin-bottom: 10px;">
-//                 <li>The Hobbit - 3 day(s) - $2.20</li>
-//             </ul>
-//         </div>
-//     `;
-// });
-
-
-document.querySelector(".bir").addEventListener("click", function(){
-    addToCart("1984", 1.5);
-});
-document.querySelector(".eki").addEventListener("click", function(){
-    addToCart("The Hobbit", 1.5);
-});
-document.querySelector(".ush").addEventListener("click", function(){
-    addToCart("To Kill a Mockingbird", 1.5);
-});
-document.querySelector(".tort").addEventListener("click", function(){
-    addToCart("Pride and Prejudice", 1.5);
-});
-document.querySelector(".bes").addEventListener("click", function(){
-    addToCart("Moby-Dick", 1.5);
-});
-document.querySelector(".alty").addEventListener("click", function(){
-    addToCart("War and Peace", 1.5);
-});
-document.querySelector(".zheti").addEventListener("click", function(){
-    addToCart("The Great Gatsby", 1.5);
-});
-document.querySelector(".sekiz").addEventListener("click", function(){
-    addToCart("The Catcher in the Rye", 1.5);
-});
-document.querySelector(".tokuz").addEventListener("click", function(){
-    addToCart("lorem", 1.5);
-});
-document.querySelector(".on").addEventListener("click", function(){
-    addToCart("OOne", 1.5);
-});
-document.querySelector(".onbir").addEventListener("click", function(){
-    addToCart("TWO", 1.5);
-});
-document.querySelector(".oneki").addEventListener("click", function(){
-    addToCart("Sony", 1.5);
-});
-
-
-let cart = [];
-let total = 0;
-
-function addToCart(name, price) {
-    cart.push({ name: name, price: price });
-    showCart();
-};
-  const cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      if (e.target.classList.contains('rent')) return;
-
-      const imgSrc = card.querySelector('img').src;
-      const title = card.querySelector('p').innerText;
-      const author = card.querySelector('span').innerText;
-      const price = card.querySelectorAll('p')[1].innerText;
-
-      modalImage.src = imgSrc;
-      modalTitle.textContent = title;
-      modalAuthor.textContent = author;
-      modalPrice.textContent = price;
-      modalType.textContent = 'Book details';
-      modal.style.display = 'flex';
+    burger.addEventListener('click', function() {
+      all.classList.toggle('active');
     });
-  });
 
-  closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
+    rentButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.stopPropagation(); // Don't trigger card click
+        const card = button.closest('.card');
+        const title = card.querySelector('p').innerText;
+        const author = card.querySelector('span').innerText;
+        const priceText = card.querySelectorAll('p')[1].innerText;
+        const imgSrc = card.querySelector('img').src;
+        const price = parseFloat(priceText.replace('$', '').replace('/day', ''));
 
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
+        // Add to cart
+        const li = document.createElement('li');
+        li.textContent = `${title} - $${price.toFixed(2)}`;
+        cartItems.appendChild(li);
+
+        total += price;
+        totalPriceEl.textContent = total.toFixed(2);
+
+        // Show modal
+        modalImage.src = imgSrc;
+        modalTitle.textContent = title;
+        modalAuthor.textContent = author;
+        modalPrice.textContent = priceText;
+        modalType.textContent = 'You have rented this book.';
+        modal.style.display = 'flex';
+      });
+    });
+
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.classList.contains('rent')) return;
+
+        const imgSrc = card.querySelector('img').src;
+        const title = card.querySelector('p').innerText;
+        const author = card.querySelector('span').innerText;
+        const price = card.querySelectorAll('p')[1].innerText;
+
+        modalImage.src = imgSrc;
+        modalTitle.textContent = title;
+        modalAuthor.textContent = author;
+        modalPrice.textContent = price;
+        modalType.textContent = 'Book details';
+        modal.style.display = 'flex';
+      });
+    });
+
+    closeModal.addEventListener('click', () => {
       modal.style.display = 'none';
-    }
-  });
-</script>
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
